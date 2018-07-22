@@ -1,9 +1,9 @@
 // shared/App.js
 import React, { Component } from 'react'
-import routes from './routes'
+import routes from '../routes'
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './Navbar'
-import NoMatch from './NoMatch'
+import Navbar from '../Navbar'
+import NoMatch from '../NoMatch'
 
 class App extends Component {
   render() {
@@ -28,4 +28,4 @@ class App extends Component {
     )
   }
 }
-export default App
+export default App;
