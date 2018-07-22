@@ -1,7 +1,7 @@
 // webpack.config.js
 
-var path = require('path')
-var webpack = require('webpack')
+var path          = require('path')
+var webpack       = require('webpack')
 var nodeExternals = require('webpack-node-externals')
 
 var browserConfig = {

@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/bmh43/.nvm/versions/node/v8.9.4/bin/node /Users/bmh43/.nvm/versions/node/v8.9.4/bin/yarn run start
+  /Users/bmh43/.nvm/versions/node/v8.9.4/bin/node /Users/bmh43/.nvm/versions/node/v8.9.4/bin/yarn run dev
 
 PATH: 
-  /Users/bmh43/Library/Python/2.7/bin:/Users/bmh43/.nvm/versions/node/v8.9.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /Users/bmh43/.nvm/versions/node/v8.9.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   0.27.5
@@ -17,14 +17,15 @@ npm manifest:
   {
     "name": "ssr-playground",
     "version": "1.0.0",
-    "description": ""
-  //  "main": "index.js",
+    "main": "index.js",
     "scripts": {
-      "start": "webpack -w & nodemon server.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "dev": "npm start",
+      "prod": "NODE_ENV=production npm start",
+      "build": "NODE_ENV=production webpack -p",
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
+    "description": "",
     "babel": {
       "presets": [
         "env",
@@ -3768,7 +3769,7 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/bmh43/Documents/dev/ssr-playground/package.json: Unexpected token / in JSON at position 72
+  SyntaxError: /Users/bmh43/Documents/Blake/dev/ssr-playground/package.json: Unexpected token } in JSON at position 207
       at JSON.parse (<anonymous>)
       at /Users/bmh43/.nvm/versions/node/v8.9.4/lib/node_modules/yarn/lib/util/fs.js:554:57
       at Generator.next (<anonymous>)
