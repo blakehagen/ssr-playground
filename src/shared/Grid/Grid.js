@@ -1,5 +1,8 @@
 // shared/Grid.js
 import React, { Component } from 'react'
+
+import styles from './grid.scss';
+
 class Grid extends Component {
   constructor(props) {
     super(props)
@@ -53,7 +56,7 @@ class Grid extends Component {
       <ul style={{display: 'flex', flexWrap: 'wrap'}}>
         {repos.map(({ name, owner, stargazers_count, html_url }) => (
           <li key={name} style={{margin: 30}}>
-            <ul>
+            <ul className={styles.wrapperGrid}>
               <li><a href={html_url}>{name}</a></li>
               <li>@{owner.login}</li>
               <li>{stargazers_count} stars</li>

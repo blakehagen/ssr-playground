@@ -1,4 +1,12 @@
 // webpack.config.js
+/*
+TODO:
+Need to clean this up
+Need HMR or something
+Set up autoprefixer
+Set up ENV production/dev
+Generate separate CSS file via webpack?
+ */
 
 var path          = require('path')
 var webpack       = require('webpack')
