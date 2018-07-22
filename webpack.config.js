@@ -4,6 +4,9 @@ var path          = require('path')
 var webpack       = require('webpack')
 var nodeExternals = require('webpack-node-externals')
 
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var browserConfig = {
   entry: './src/browser/index.js',
   output: {
@@ -13,12 +16,35 @@ var browserConfig = {
   },
   module: {
     rules: [
-      { test: /\.js$/, use: 'babel-loader' },
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options:
+              {
+                modules: true,
+                localIdentName: '[name]--[local]--[hash:base64:5]'
+              }
+          },
+          { loader: 'sass-loader' }
+        ],
+      },
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: "true"
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      // allChunks: true
     })
   ]
 }
@@ -34,7 +60,22 @@ var serverConfig = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' }
+      { test: /\.js$/, use: 'babel-loader' },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'css-loader/locals',
+            options:
+              {
+                modules: true,
+                localIdentName: '[name]--[local]--[hash:base64:5]'
+              }
+          },
+          { loader: 'sass-loader' }
+        ],
+      },
     ]
   },
   plugins: [

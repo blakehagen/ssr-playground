@@ -5,10 +5,12 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from '../Navbar'
 import NoMatch from '../NoMatch'
 
+import styles from './app.scss';
+
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.wrapperTest}>
         <Navbar />
 
         <Switch>
