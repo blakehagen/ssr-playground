@@ -8,25 +8,25 @@ Set up ENV production/dev
 Generate separate CSS file via webpack?
  */
 
-var path          = require('path')
-var webpack       = require('webpack')
-var nodeExternals = require('webpack-node-externals')
+const path = require('path');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var browserConfig = {
+const browserConfig = {
   entry: './src/browser/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.scss$/,
@@ -35,36 +35,35 @@ var browserConfig = {
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
-            options:
-              {
-                modules: true,
-                localIdentName: '[name]--[local]--[hash:base64:5]'
-              }
+            options: {
+              modules: true,
+              localIdentName: '[name]--[local]--[hash:base64:5]',
+            },
           },
-          { loader: 'sass-loader' }
+          { loader: 'sass-loader' },
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
-      __isBrowser__: "true"
+      __isBrowser__: 'true',
     }),
     new ExtractTextPlugin({
       filename: 'style.css',
       // allChunks: true
-    })
-  ]
-}
+    }),
+  ],
+};
 
-var serverConfig = {
+const serverConfig = {
   entry: './src/server/index.js',
   target: 'node',
   externals: [nodeExternals()],
   output: {
     path: __dirname,
     filename: 'server.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -75,22 +74,21 @@ var serverConfig = {
         use: [
           {
             loader: 'css-loader/locals',
-            options:
-              {
-                modules: true,
-                localIdentName: '[name]--[local]--[hash:base64:5]'
-              }
+            options: {
+              modules: true,
+              localIdentName: '[name]--[local]--[hash:base64:5]',
+            },
           },
-          { loader: 'sass-loader' }
+          { loader: 'sass-loader' },
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
-      __isBrowser__: "false"
-    })
-  ]
-}
+      __isBrowser__: 'false',
+    }),
+  ],
+};
 
-module.exports = [browserConfig, serverConfig]
+module.exports = [browserConfig, serverConfig];
