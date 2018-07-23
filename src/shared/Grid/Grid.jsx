@@ -1,4 +1,4 @@
-// shared/Grid.js
+// shared/Grid.jsx
 import React, { Component } from 'react'
 
 import styles from './grid.scss';
