@@ -1,13 +1,13 @@
 // src/browser/index.js
 
-import React from 'react'
-import { hydrate } from 'react-dom'
-import App from '../shared/App'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from '../shared/App';
 
 hydrate(
   <BrowserRouter>
     <App />
   </BrowserRouter>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
