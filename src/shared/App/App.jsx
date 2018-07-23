@@ -1,4 +1,4 @@
-// shared/App.js
+// shared/App.jsx
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import routes from '../routes';

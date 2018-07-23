@@ -12,6 +12,7 @@ import routes from '../shared/routes';
 import { fetchPopularRepos } from '../shared/api';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -56,6 +57,6 @@ app.get('*', (req, res, next) => {
     .catch(next);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Server is listening on port: 3000');
 });

@@ -25,7 +25,7 @@ const browserConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: 'babel-loader',
       },
       {
@@ -45,6 +45,7 @@ const browserConfig = {
       },
     ],
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: 'true',
@@ -67,7 +68,10 @@ const serverConfig = {
   },
   module: {
     rules: [
-      { test: /\.js$/, use: 'babel-loader' },
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+      },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -84,6 +88,7 @@ const serverConfig = {
       },
     ],
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: 'false',
