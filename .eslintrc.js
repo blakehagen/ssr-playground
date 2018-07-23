@@ -30,11 +30,12 @@ module.exports = {
   },
   'root': true,
   'rules': {
-    "prettier/prettier": "error",
+    "prettier/prettier": 'error',
     'global-require': 'off',
-    "jsx-a11y/href-no-hash": [ 0, [ "Link", "Anchor" ] ], // issue with the packages
-    "import/extensions": 'off', // TODO -> Figure out later
-    "import/no-unresolved": 'off', // TODO -> Figure out later
-    "import/no-extraneous-dependencies": 'off', // TODO -> Figure out later
+    'object-curly-newline': 'off',
+    // "jsx-a11y/href-no-hash": [ 0, [ "Link", "Anchor" ] ], // issue with the packages
+    // "import/extensions": 'off', // TODO -> Figure out later
+    // "import/no-unresolved": 'off', // TODO -> Figure out later
+    // "import/no-extraneous-dependencies": 'off', // TODO -> Figure out later
   },
 };

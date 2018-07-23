@@ -27,16 +27,17 @@ app.get('*', (req, res, next) => {
     ? activeRoute.fetchInitialData(req.path)
     : Promise.resolve();
 
-  promise.then((data) => {
-    const context = { data };
+  promise
+    .then(data => {
+      const context = { data };
 
-    const markup = renderToString(
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>,
-    );
+      const markup = renderToString(
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>,
+      );
 
-    res.send(`
+      res.send(`
       <!DOCTYPE html>
       <html>
         <head>
@@ -51,9 +52,9 @@ app.get('*', (req, res, next) => {
         </body>
       </html>
     `);
-  }).catch(next);
+    })
+    .catch(next);
 });
-
 
 app.listen(3000, () => {
   console.log('Server is listening on port: 3000');
