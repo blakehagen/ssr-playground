@@ -15,15 +15,6 @@
     "yarn": "~0.27.5"
   },
   "description": "",
-  "babel": {
-    "presets": [
-      "env",
-      "react"
-    ],
-    "plugins": [
-      "transform-object-rest-spread"
-    ]
-  },
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.2.6",

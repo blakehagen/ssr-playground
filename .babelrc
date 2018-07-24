@@ -5,6 +5,7 @@
     "babel-preset-stage-0"
   ],
   "plugins": [
+    "transform-object-rest-spread",
     "css-modules-transform"
   ]
 }
