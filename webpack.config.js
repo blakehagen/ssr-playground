@@ -7,16 +7,20 @@ Set up autoprefixer
 Set up ENV production/dev
 Generate separate CSS file via webpack?
  */
-
+const _ = require('lodash');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-
-const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const useProductionBuild = _.includes(['production', 'development'], process.env.NODE_ENV);
+console.log('useProductionBuild -->', useProductionBuild);
 
 const browserConfig = {
-  entry: './src/browser/index.js',
+  entry: ['webpack-hot-middleware/client?reload=true', './src/browser/index.js'],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
@@ -47,8 +51,13 @@ const browserConfig = {
   },
   resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       __isBrowser__: 'true',
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        WEBPACK: true,
+      },
     }),
     new ExtractTextPlugin({
       filename: 'style.css',
@@ -91,8 +100,24 @@ const serverConfig = {
   resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        WEBPACK: true,
+      },
       __isBrowser__: 'false',
     }),
+    // new UglifyJSPlugin({
+    //   sourceMap: true,
+    //   uglifyOptions: {
+    //     compress: {
+    //       warnings: false,
+    //       drop_console: false,
+    //     },
+    //     output: {
+    //       comments: false,
+    //     },
+    //   },
+    // }),
   ],
 };
 
